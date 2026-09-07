@@ -49,10 +49,15 @@ _certificate_store: Dict[str, Dict[str, Any]] = {}
 
 app = FastAPI(title="Insaaf AI API", version="0.1.0")
 
-# Allow the React dev server to call this API during development.
+def _parse_cors_origins() -> list:
+    raw = os.getenv("CORS_ALLOW_ORIGINS", "*")
+    if raw.strip() == "*":
+        return ["*"]
+    return [o.strip() for o in raw.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # tighten this to your deployed frontend URL in production
+    allow_origins=_parse_cors_origins(),
     allow_methods=["*"],
     allow_headers=["*"],
 )
