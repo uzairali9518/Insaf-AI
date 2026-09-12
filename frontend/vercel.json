@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://insaaf-ai-backend.onrender.com/api/:path*"
+    }
+  ]
+}

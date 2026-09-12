@@ -4,8 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Seal from "./Seal";
 
-const RAW_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-const API_BASE_URL = RAW_URL.replace(/\/+$/, "");
+
 
 export default function CertificatePage() {
   const [cert, setCert] = useState(null);
@@ -22,7 +21,7 @@ export default function CertificatePage() {
       return;
     }
 
-    fetch(`${API_BASE_URL}/api/certificate/${certificateId}`)
+    fetch(`/api/certificate/${certificateId}`)
       .then(async (res) => {
         if (!res.ok) throw new Error("Certificate not found.");
         return res.json();
