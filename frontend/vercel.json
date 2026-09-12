@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://insaaf-ai-backend.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
